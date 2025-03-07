@@ -3,13 +3,16 @@ import datetime
 import csv
 
 
-protecao = input('digite a senha:')
+protecao = input('''/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*//*/*/*/*/  
+                                    digite a senha:
+/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*//*/*/*/*/ ''')
 if protecao == '123':
     print('Acesso liberado meu patrão')
 elif protecao == '456':
-    print('Acesso liberado meu patroa')
+    print('Acesso liberado patroa')
 else:
     print('Acesso negado')
+    exit()
 
 print('''
       
@@ -43,8 +46,8 @@ while True:  # Loop indefinido para continuar verificando um pressionamento de t
             candidatos.append(candidato)
             escreva = csv.writer(db)
             escreva.writerow(candidato)
+            print(candidato)
         break  # Sair do loop após responder
     elif answer == b'3':  # Se '3' for pressionado
         print("bar")
         break  # Sair do loop após responder
-
