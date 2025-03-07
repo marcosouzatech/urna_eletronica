@@ -3,9 +3,7 @@ import datetime
 import csv
 
 
-protecao = input('''/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*//*/*/*/*/  
-                                    digite a senha:
-/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*//*/*/*/*/ ''')
+protecao = input('digite a senha:' + '\n')
 if protecao == '123':
     print('Acesso liberado meu patrão')
 elif protecao == '456':
@@ -31,6 +29,13 @@ print('''
      3 - banir candidatos safados
       ''')
 
+candidato = input('Digite o nome do candidato:')
+numero_candidato = int(input('Digite o número do candidato:'))
+
+def cadastro_candidatos(candidato, numero_candidato):
+    with open('candidatos.csv', 'a') as db:
+        return (candidato, numero_candidato)
+
 while True:  # Loop indefinido para continuar verificando um pressionamento de tecla
     answer = msvcrt.getch()  # Aguardar pressionamento de tecla
 
@@ -41,13 +46,10 @@ while True:  # Loop indefinido para continuar verificando um pressionamento de t
                 print(row)
         break  # Sair do loop após responder
     elif answer == b'2':  # Se '2' for pressionado
-        with open('candidatos.csv', 'a') as db:
-            candidato = input('Digite o nome do candidato:', 'Digite o partido do candidato:' , 'Digite o número do candidato:')
-            candidatos.append(candidato)
-            escreva = csv.writer(db)
-            escreva.writerow(candidato)
-            print(candidato)
+        cadastro_candidatos(candidato, numero_candidato)
+        print ('Candidato cadastrado com sucesso', candidato, numero_candidato)
         break  # Sair do loop após responder
     elif answer == b'3':  # Se '3' for pressionado
         print("bar")
         break  # Sair do loop após responder
+
